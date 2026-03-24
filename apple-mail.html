@@ -18,10 +18,11 @@
   ╚══════════════════════════════════════════════════════════╝
 -->
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<meta name="color-scheme" content="dark light">
+<meta name="supported-color-schemes" content="dark light">
 <style>
-  /* Force the email body background transparent — prevents Apple Mail white-wash */
-  body, html { background: transparent !important; }
-  div[apple-content-editable="true"] { background: transparent !important; }
+  /* Tell the renderer to follow OS dark/light preference — prevents white override */
+  :root { color-scheme: dark light; }
 
   /* All other rules scoped to #socia-sig — zero bleed into email body */
 
