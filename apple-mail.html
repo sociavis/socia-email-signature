@@ -39,9 +39,6 @@
 
   .sig {
     width: 100%;
-    max-width: 560px;
-    background: #0a0a0a;
-    border: 1px solid #1c1c1c;
     position: relative;
     overflow: hidden;
   }
@@ -339,11 +336,6 @@
   ════════════════════════════════════════ */
   @media (prefers-color-scheme: light) {
 
-    .sig {
-      background: #f7f7f7;
-      border-color: #e0e0e0;
-    }
-
     /* Lighter scan lines */
     .sig-scan {
       background: repeating-linear-gradient(
@@ -431,7 +423,8 @@
 </head>
 <body>
 
-<div class="sig" style="background:#0a0a0a;border:1px solid #1c1c1c;max-width:560px;width:100%;">
+<table cellpadding="0" cellspacing="0" border="0" width="560" bgcolor="#0a0a0a" style="background:#0a0a0a;border:1px solid #1c1c1c;border-collapse:separate;"><tr><td bgcolor="#0a0a0a" style="background:#0a0a0a;padding:0;">
+<div class="sig">
   <div class="sig-topbar"></div>
   <div class="sig-scan"></div>
   <div class="corner c-tl"></div>
@@ -496,6 +489,7 @@
 
   <div class="sig-bottombar"></div>
 </div>
+</td></tr></table>
 
 </body>
 </html>
