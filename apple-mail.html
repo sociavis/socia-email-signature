@@ -19,7 +19,11 @@
 -->
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-  /* All rules scoped to #socia-sig — zero bleed into email body */
+  /* Force the email body background transparent — prevents Apple Mail white-wash */
+  body, html { background: transparent !important; }
+  div[apple-content-editable="true"] { background: transparent !important; }
+
+  /* All other rules scoped to #socia-sig — zero bleed into email body */
 
   #socia-sig .sig {
     width: 100%;
