@@ -434,7 +434,10 @@
 
       <!-- 3D animated logomark: WebGL-rendered GIF with transparent background -->
       <div class="logo-mark">
-        <img class="logo-gif" src="https://socia-email-signature.vercel.app/socia-logo-email.gif" alt="Socia Visual" width="96" height="96">
+        <picture>
+          <source media="(prefers-color-scheme: light)" srcset="https://socia-email-signature.vercel.app/socia-logo-email-light.gif">
+          <img class="logo-gif" src="https://socia-email-signature.vercel.app/socia-logo-email.gif" alt="Socia Visual" width="96" height="96">
+        </picture>
       </div>
 
       <div class="vdivider"></div>
