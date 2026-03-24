@@ -25,50 +25,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* All rules scoped to #socia-sig — zero bleed into email body */
 
-  body {
-    background: transparent;
-    font-family: 'Chakra Petch', monospace, sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ════════════════════════════════════════
-     DARK MODE (default)
-  ════════════════════════════════════════ */
-
-  .sig {
+  #socia-sig .sig {
     width: 100%;
     position: relative;
     overflow: hidden;
   }
 
-  .sig-topbar {
+  #socia-sig .sig-topbar {
     height: 2px;
     background: linear-gradient(90deg, transparent 0%, #A8FF00 35%, #D4FF00 65%, transparent 100%);
-    -webkit-animation: barPulse 3s ease-in-out infinite;
-    animation: barPulse 3s ease-in-out infinite;
+    -webkit-animation: svBarPulse 3s ease-in-out infinite;
+    animation: svBarPulse 3s ease-in-out infinite;
   }
-  @-webkit-keyframes barPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-  @keyframes barPulse          { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  @-webkit-keyframes svBarPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  @keyframes svBarPulse          { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-  /* Scan-line texture */
-  .sig-scan {
+  #socia-sig .sig-scan {
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(168, 255, 0, 0.013) 3px,
-      rgba(168, 255, 0, 0.013) 4px
-    );
+    background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(168,255,0,0.013) 3px, rgba(168,255,0,0.013) 4px);
     pointer-events: none;
     z-index: 10;
   }
 
-  /* HUD corner brackets */
-  .corner {
+  #socia-sig .corner {
     position: absolute;
     width: 9px;
     height: 9px;
@@ -76,23 +58,22 @@
     border-style: solid;
     opacity: 0;
     z-index: 11;
-    -webkit-animation: cornersIn 0.6s ease forwards;
-    animation: cornersIn 0.6s ease forwards;
+    -webkit-animation: svCornersIn 0.6s ease forwards;
+    animation: svCornersIn 0.6s ease forwards;
   }
-  .c-tl { top: 5px;    left: 5px;   border-width: 1px 0 0 1px; -webkit-animation-delay:.1s; animation-delay:.1s; }
-  .c-tr { top: 5px;    right: 5px;  border-width: 1px 1px 0 0; -webkit-animation-delay:.2s; animation-delay:.2s; }
-  .c-bl { bottom: 5px; left: 5px;   border-width: 0 0 1px 1px; -webkit-animation-delay:.3s; animation-delay:.3s; }
-  .c-br { bottom: 5px; right: 5px;  border-width: 0 1px 1px 0; -webkit-animation-delay:.4s; animation-delay:.4s; }
-  @-webkit-keyframes cornersIn { to { opacity: 0.5; } }
-  @keyframes cornersIn          { to { opacity: 0.5; } }
+  #socia-sig .c-tl { top: 5px;    left: 5px;   border-width: 1px 0 0 1px; -webkit-animation-delay:.1s; animation-delay:.1s; }
+  #socia-sig .c-tr { top: 5px;    right: 5px;  border-width: 1px 1px 0 0; -webkit-animation-delay:.2s; animation-delay:.2s; }
+  #socia-sig .c-bl { bottom: 5px; left: 5px;   border-width: 0 0 1px 1px; -webkit-animation-delay:.3s; animation-delay:.3s; }
+  #socia-sig .c-br { bottom: 5px; right: 5px;  border-width: 0 1px 1px 0; -webkit-animation-delay:.4s; animation-delay:.4s; }
+  @-webkit-keyframes svCornersIn { to { opacity: 0.5; } }
+  @keyframes svCornersIn          { to { opacity: 0.5; } }
 
-  /* ── Main row ── */
-  .sig-body {
+  #socia-sig .sig-body {
     padding: 22px 24px 0;
     position: relative;
     z-index: 1;
   }
-  .sig-row {
+  #socia-sig .sig-row {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -100,48 +81,44 @@
     gap: 20px;
   }
 
-  /* Logo — 3D animated GIF (transparent bg, works on any background color) */
-  .logo-mark { -webkit-flex-shrink: 0; flex-shrink: 0; width: 96px; height: 96px; }
-  .logo-gif  { width: 96px; height: 96px; display: block; }
+  #socia-sig .logo-mark { -webkit-flex-shrink: 0; flex-shrink: 0; width: 96px; height: 96px; }
+  #socia-sig .logo-gif  { width: 96px; height: 96px; display: block; }
 
-  /* Vertical divider */
-  .vdivider {
+  #socia-sig .vdivider {
     width: 1px;
     height: 96px;
     background: linear-gradient(180deg, transparent, #A8FF00 40%, #D4FF00 60%, transparent);
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
     opacity: 0;
-    -webkit-animation: fadeIn 0.8s ease forwards 0.5s;
-    animation: fadeIn 0.8s ease forwards 0.5s;
+    -webkit-animation: svFadeIn 0.8s ease forwards 0.5s;
+    animation: svFadeIn 0.8s ease forwards 0.5s;
   }
-  @-webkit-keyframes fadeIn { to { opacity: 0.35; } }
-  @keyframes fadeIn          { to { opacity: 0.35; } }
+  @-webkit-keyframes svFadeIn { to { opacity: 0.35; } }
+  @keyframes svFadeIn          { to { opacity: 0.35; } }
 
-  /* Info block */
-  .sig-info {
-    -webkit-flex: 1;
-    flex: 1;
-    min-width: 0;
-  }
-  @-webkit-keyframes slideIn { to { opacity: 1; -webkit-transform: none; transform: none; } }
-  @keyframes slideIn          { to { opacity: 1; transform: none; } }
+  #socia-sig .sig-info { -webkit-flex: 1; flex: 1; min-width: 0; }
 
-  /* Per-line stagger */
-  .sig-name, .sig-title, .contact-row, .sig-services {
+  @-webkit-keyframes svSlideIn { to { opacity: 1; -webkit-transform: none; transform: none; } }
+  @keyframes svSlideIn          { to { opacity: 1; transform: none; } }
+
+  #socia-sig .sig-name,
+  #socia-sig .sig-title,
+  #socia-sig .contact-row,
+  #socia-sig .sig-services {
     opacity: 0;
     -webkit-transform: translateX(5px);
     transform: translateX(5px);
-    -webkit-animation: slideIn 0.6s ease forwards;
-    animation: slideIn 0.6s ease forwards;
+    -webkit-animation: svSlideIn 0.6s ease forwards;
+    animation: svSlideIn 0.6s ease forwards;
   }
-  .sig-name                              { -webkit-animation-delay: 0.3s;  animation-delay: 0.3s; }
-  .sig-title                             { -webkit-animation-delay: 0.55s; animation-delay: 0.55s; }
-  .contact-row:nth-child(1)              { -webkit-animation-delay: 0.75s; animation-delay: 0.75s; }
-  .contact-row:nth-child(2)              { -webkit-animation-delay: 0.95s; animation-delay: 0.95s; }
-  .sig-services                          { -webkit-animation-delay: 1.15s; animation-delay: 1.15s; }
+  #socia-sig .sig-name                 { -webkit-animation-delay: 0.3s;  animation-delay: 0.3s; }
+  #socia-sig .sig-title                { -webkit-animation-delay: 0.55s; animation-delay: 0.55s; }
+  #socia-sig .contact-row:nth-child(1) { -webkit-animation-delay: 0.75s; animation-delay: 0.75s; }
+  #socia-sig .contact-row:nth-child(2) { -webkit-animation-delay: 0.95s; animation-delay: 0.95s; }
+  #socia-sig .sig-services             { -webkit-animation-delay: 1.15s; animation-delay: 1.15s; }
 
-  .sig-name {
+  #socia-sig .sig-name {
     font-family: 'Chakra Petch', monospace, sans-serif;
     font-size: 15px;
     font-weight: 700;
@@ -153,29 +130,29 @@
     white-space: nowrap;
   }
 
-  .sig-title {
+  #socia-sig .sig-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px;
     color: #A8FF00;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 12px;
-    -webkit-animation: slideIn 0.6s ease forwards 0.55s, flicker 10s ease-in-out infinite 3s;
-    animation: slideIn 0.6s ease forwards 0.55s, flicker 10s ease-in-out infinite 3s;
+    -webkit-animation: svSlideIn 0.6s ease forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
+    animation: svSlideIn 0.6s ease forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
   }
-  @-webkit-keyframes flicker {
+  @-webkit-keyframes svFlicker {
     0%, 94%, 96%, 98%, 100% { opacity: 1; }
     95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
   }
-  @keyframes flicker {
+  @keyframes svFlicker {
     0%, 94%, 96%, 98%, 100% { opacity: 1; }
     95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
   }
 
-  .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 4px; }
-  .contact-row  { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 9px; }
+  #socia-sig .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 4px; }
+  #socia-sig .contact-row  { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 9px; }
 
-  .contact-tag {
+  #socia-sig .contact-tag {
     font-family: 'Share Tech Mono', monospace;
     font-size: 7.5px;
     color: #333;
@@ -186,7 +163,7 @@
     flex-shrink: 0;
   }
 
-  .contact-val {
+  #socia-sig .contact-val {
     font-family: 'Chakra Petch', monospace, sans-serif;
     font-size: 10.5px;
     color: #888;
@@ -196,39 +173,38 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  .contact-val:hover { color: #A8FF00; }
+  #socia-sig .contact-val:hover { color: #A8FF00; }
 
-  /* ── Services marquee ── */
-  .sig-services {
+  #socia-sig .sig-services {
     margin-top: 18px;
     padding: 9px 0;
-    border-top: 1px solid #141414;
-    border-bottom: 1px solid #141414;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
     overflow: hidden;
     position: relative;
     z-index: 1;
   }
 
-  .services-track {
+  #socia-sig .services-track {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
     align-items: center;
     width: -webkit-max-content;
     width: max-content;
-    -webkit-animation: marquee 24s linear infinite;
-    animation: marquee 24s linear infinite;
+    -webkit-animation: svMarquee 24s linear infinite;
+    animation: svMarquee 24s linear infinite;
   }
-  @-webkit-keyframes marquee {
+  @-webkit-keyframes svMarquee {
     from { -webkit-transform: translateX(0); transform: translateX(0); }
     to   { -webkit-transform: translateX(-50%); transform: translateX(-50%); }
   }
-  @keyframes marquee {
+  @keyframes svMarquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
 
-  .svc-item {
+  #socia-sig .svc-item {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -238,7 +214,7 @@
     white-space: nowrap;
   }
 
-  .svc-diamond {
+  #socia-sig .svc-diamond {
     width: 5px;
     height: 5px;
     background: #A8FF00;
@@ -249,7 +225,7 @@
     opacity: 0.55;
   }
 
-  .svc-label {
+  #socia-sig .svc-label {
     font-family: 'Share Tech Mono', monospace;
     font-size: 7.5px;
     color: #888;
@@ -257,8 +233,7 @@
     text-transform: uppercase;
   }
 
-  /* ── Footer ── */
-  .sig-footer {
+  #socia-sig .sig-footer {
     padding: 11px 24px 16px;
     display: -webkit-flex;
     display: flex;
@@ -271,9 +246,7 @@
     z-index: 1;
   }
 
-  /* Shimmer: keyframe only moves background-position,
-     gradient colors live on the element so media query can swap them */
-  .sig-tagline {
+  #socia-sig .sig-tagline {
     font-family: 'Share Tech Mono', monospace;
     font-size: 7.5px;
     letter-spacing: 0.1em;
@@ -283,21 +256,21 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    -webkit-animation: shimmer 30s linear infinite;
-    animation: shimmer 30s linear infinite;
+    -webkit-animation: svShimmer 30s linear infinite;
+    animation: svShimmer 30s linear infinite;
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
   }
-  @-webkit-keyframes shimmer {
+  @-webkit-keyframes svShimmer {
     0%   { background-position: 200% center; }
     100% { background-position: -200% center; }
   }
-  @keyframes shimmer {
+  @keyframes svShimmer {
     0%   { background-position: 200% center; }
     100% { background-position: -200% center; }
   }
 
-  .sig-socials {
+  #socia-sig .sig-socials {
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -307,104 +280,59 @@
     flex-shrink: 0;
   }
 
-  .soc-link {
+  #socia-sig .soc-link {
     display: inline-flex;
     align-items: center;
     color: #555555;
     text-decoration: none;
-    opacity: 1;
     -webkit-transition: color 0.25s ease;
     transition: color 0.25s ease;
   }
-  .soc-link svg { width: 14px; height: 14px; display: block; }
-  .soc-link:hover { color: #A8FF00; }
+  #socia-sig .soc-link svg { width: 14px; height: 14px; display: block; }
+  #socia-sig .soc-link:hover { color: #A8FF00; }
 
-  .sig-bottombar {
+  #socia-sig .sig-bottombar {
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, #A8FF00 50%, transparent 100%);
     opacity: 0;
-    -webkit-animation: fadeIn 1.2s ease forwards 0.8s;
-    animation: fadeIn 1.2s ease forwards 0.8s;
+    -webkit-animation: svFadeIn 1.2s ease forwards 0.8s;
+    animation: svFadeIn 1.2s ease forwards 0.8s;
   }
 
-  /* ════════════════════════════════════════
-     LIGHT MODE OVERRIDES
-     — logo switches to dark charcoal (neon green has
-       near-zero contrast on white backgrounds)
-     — glow animation is redefined as a soft shadow
-     — all chrome flips to near-white with dark text
-  ════════════════════════════════════════ */
   @media (prefers-color-scheme: light) {
-
-    /* Lighter scan lines */
-    .sig-scan {
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0, 0, 0, 0.015) 3px,
-        rgba(0, 0, 0, 0.015) 4px
-      );
-    }
-
-    /* Corner brackets */
-    .corner { border-color: #5a8800; }
-    @-webkit-keyframes cornersIn { to { opacity: 0.55; } }
-    @keyframes cornersIn          { to { opacity: 0.55; } }
-
-    /* Top accent bar: olive */
-    .sig-topbar {
-      background: linear-gradient(90deg, transparent 0%, #5a8800 35%, #7ab000 65%, transparent 100%);
-    }
-
-    /* Vertical divider */
-    .vdivider {
-      background: linear-gradient(180deg, transparent, #999 40%, #bbb 60%, transparent);
-    }
-
-    /* Text */
-    .sig-name  { color: #0f0f0f; }
-    .sig-title { color: #3d6200; }
-
-    /* Contacts */
-    .contact-tag { color: #888; }
-    .contact-val { color: #222; }
-    .contact-val:hover { color: #3d6200; }
-
-    /* Services strip */
-    .sig-services { border-color: #ccc; }
-    .svc-diamond  { background: #4d7a00; opacity: 0.8; }
-    .svc-label    { color: #555; }
-
-    /* Tagline shimmer */
-    .sig-tagline {
+    #socia-sig .sig-topbar { background: linear-gradient(90deg, transparent 0%, #5a8800 35%, #7ab000 65%, transparent 100%); }
+    #socia-sig .corner { border-color: #5a8800; }
+    #socia-sig .vdivider { background: linear-gradient(180deg, transparent, #999 40%, #bbb 60%, transparent); }
+    #socia-sig .sig-name  { color: #0f0f0f; }
+    #socia-sig .sig-title { color: #3d6200; }
+    #socia-sig .contact-tag { color: #888; }
+    #socia-sig .contact-val { color: #222; }
+    #socia-sig .contact-val:hover { color: #3d6200; }
+    #socia-sig .sig-services { border-color: #ccc; }
+    #socia-sig .svc-diamond  { background: #4d7a00; opacity: 0.8; }
+    #socia-sig .svc-label    { color: #555; }
+    #socia-sig .sig-tagline  {
       background: linear-gradient(90deg, #888 0%, #3d6200 50%, #888 100%);
       background-size: 300% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    /* Socials */
-    .soc-link { color: #666; }
-    .soc-link:hover { color: #3d6200; }
+    #socia-sig .soc-link { color: #666; }
+    #socia-sig .soc-link:hover { color: #3d6200; }
   }
 
-  /* ════════════════════════════════════════
-     MOBILE (≤ 480px)
-  ════════════════════════════════════════ */
   @media (max-width: 480px) {
-    .sig-body   { padding: 18px 16px 0; }
-    .sig-footer { padding: 10px 16px 14px; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: flex-start; align-items: flex-start; gap: 8px; }
-    .sig-name   { font-size: 13px; }
-    .sig-title  { font-size: 8px; }
-    .contact-val { font-size: 9.5px; }
-    .logo-mark { width: 72px; height: 72px; }
-    .logo-gif  { width: 72px; height: 72px; }
-    .vdivider   { height: 76px; }
-    .sig-row    { gap: 14px; }
-    /* Shimmer breaks at very narrow widths — fall back to static color */
-    .sig-tagline {
+    #socia-sig .sig-body   { padding: 18px 16px 0; }
+    #socia-sig .sig-footer { padding: 10px 16px 14px; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: flex-start; align-items: flex-start; gap: 8px; }
+    #socia-sig .sig-name   { font-size: 13px; }
+    #socia-sig .sig-title  { font-size: 8px; }
+    #socia-sig .contact-val { font-size: 9.5px; }
+    #socia-sig .logo-mark { width: 72px; height: 72px; }
+    #socia-sig .logo-gif  { width: 72px; height: 72px; }
+    #socia-sig .vdivider  { height: 76px; }
+    #socia-sig .sig-row   { gap: 14px; }
+    #socia-sig .sig-tagline {
       background: none;
       -webkit-background-clip: unset;
       -webkit-text-fill-color: unset;
@@ -415,15 +343,14 @@
     }
   }
 
-  /* Mobile light mode: tagline static dark text */
   @media (max-width: 480px) and (prefers-color-scheme: light) {
-    .sig-tagline { color: #777777; }
+    #socia-sig .sig-tagline { color: #777777; }
   }
 </style>
 </head>
 <body>
 
-<table cellpadding="0" cellspacing="0" border="0" width="560" bgcolor="#0a0a0a" style="background:#0a0a0a;border:1px solid #1c1c1c;border-collapse:separate;"><tr><td bgcolor="#0a0a0a" style="background:#0a0a0a;padding:0;">
+<table id="socia-sig" cellpadding="0" cellspacing="0" border="0" width="560" bgcolor="#0a0a0a" style="background:#0a0a0a;border:1px solid #1c1c1c;border-collapse:separate;"><tr><td bgcolor="#0a0a0a" style="background:#0a0a0a;padding:0;">
 <div class="sig">
   <div class="sig-topbar"></div>
   <div class="sig-scan"></div>
