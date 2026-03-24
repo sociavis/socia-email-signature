@@ -54,8 +54,8 @@
 
   #socia-sig .corner {
     position: absolute;
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     border-color: #A8FF00;
     border-style: solid;
     opacity: 0;
@@ -63,10 +63,10 @@
     -webkit-animation: svCornersIn 0.6s ease forwards;
     animation: svCornersIn 0.6s ease forwards;
   }
-  #socia-sig .c-tl { top: 5px;    left: 5px;   border-width: 1px 0 0 1px; -webkit-animation-delay:.1s; animation-delay:.1s; }
-  #socia-sig .c-tr { top: 5px;    right: 5px;  border-width: 1px 1px 0 0; -webkit-animation-delay:.2s; animation-delay:.2s; }
-  #socia-sig .c-bl { bottom: 5px; left: 5px;   border-width: 0 0 1px 1px; -webkit-animation-delay:.3s; animation-delay:.3s; }
-  #socia-sig .c-br { bottom: 5px; right: 5px;  border-width: 0 1px 1px 0; -webkit-animation-delay:.4s; animation-delay:.4s; }
+  #socia-sig .c-tl { top: 6px;    left: 6px;   border-width: 1px 0 0 1px; -webkit-animation-delay:.1s; animation-delay:.1s; }
+  #socia-sig .c-tr { top: 6px;    right: 6px;  border-width: 1px 1px 0 0; -webkit-animation-delay:.2s; animation-delay:.2s; }
+  #socia-sig .c-bl { bottom: 6px; left: 6px;   border-width: 0 0 1px 1px; -webkit-animation-delay:.3s; animation-delay:.3s; }
+  #socia-sig .c-br { bottom: 6px; right: 6px;  border-width: 0 1px 1px 0; -webkit-animation-delay:.4s; animation-delay:.4s; }
   @-webkit-keyframes svCornersIn { to { opacity: 0.5; } }
   @keyframes svCornersIn          { to { opacity: 0.5; } }
 
@@ -96,8 +96,8 @@
     -webkit-animation: svFadeIn 0.8s ease forwards 0.5s;
     animation: svFadeIn 0.8s ease forwards 0.5s;
   }
-  @-webkit-keyframes svFadeIn { to { opacity: 0.35; } }
-  @keyframes svFadeIn          { to { opacity: 0.35; } }
+  @-webkit-keyframes svFadeIn { to { opacity: 0.4; } }
+  @keyframes svFadeIn          { to { opacity: 0.4; } }
 
   #socia-sig .sig-info { -webkit-flex: 1; flex: 1; min-width: 0; }
 
@@ -109,10 +109,10 @@
   #socia-sig .contact-row,
   #socia-sig .sig-services {
     opacity: 0;
-    -webkit-transform: translateX(5px);
-    transform: translateX(5px);
-    -webkit-animation: svSlideIn 0.6s ease forwards;
-    animation: svSlideIn 0.6s ease forwards;
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+    -webkit-animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
   #socia-sig .sig-name                 { -webkit-animation-delay: 0.3s;  animation-delay: 0.3s; }
   #socia-sig .sig-title                { -webkit-animation-delay: 0.55s; animation-delay: 0.55s; }
@@ -139,8 +139,8 @@
     letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 12px;
-    -webkit-animation: svSlideIn 0.6s ease forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
-    animation: svSlideIn 0.6s ease forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
+    -webkit-animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
+    animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
   }
   @-webkit-keyframes svFlicker {
     0%, 94%, 96%, 98%, 100% { opacity: 1; }
@@ -151,7 +151,7 @@
     95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
   }
 
-  #socia-sig .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 4px; }
+  #socia-sig .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 5px; }
   #socia-sig .contact-row  { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 9px; }
 
   #socia-sig .contact-tag {
@@ -180,8 +180,8 @@
   #socia-sig .sig-services {
     margin-top: 18px;
     padding: 9px 0;
-    border-top: 1px solid #2a2a2a;
-    border-bottom: 1px solid #2a2a2a;
+    border-top: 1px solid #141414;
+    border-bottom: 1px solid #141414;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -224,7 +224,7 @@
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
-    opacity: 0.55;
+    opacity: 0.6;
   }
 
   #socia-sig .svc-label {
