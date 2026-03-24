@@ -70,7 +70,7 @@
   @keyframes svCornersIn          { to { opacity: 0.5; } }
 
   #socia-sig .sig-body {
-    padding: 16px 20px 16px;
+    padding: 12px 18px 12px;
     position: relative;
     z-index: 1;
   }
@@ -79,7 +79,7 @@
     display: flex;
     -webkit-align-items: center;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
   #socia-sig .logo-mark { -webkit-flex-shrink: 0; flex-shrink: 0; width: 96px; height: 96px; }
@@ -125,7 +125,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
     white-space: nowrap;
   }
 
@@ -135,7 +135,7 @@
     color: #A8FF00;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     -webkit-animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
     animation: svSlideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.55s, svFlicker 10s ease-in-out infinite 3s;
   }
@@ -148,7 +148,7 @@
     95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
   }
 
-  #socia-sig .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 5px; }
+  #socia-sig .sig-contacts { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 3px; }
   #socia-sig .contact-row  { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 9px; }
 
   #socia-sig .contact-tag {
@@ -174,8 +174,35 @@
   }
   #socia-sig .contact-val:hover { color: #A8FF00; }
 
+  #socia-sig .sig-checker {
+    height: 5px;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: svFadeIn 1s ease forwards 1s;
+    animation: svFadeIn 1s ease forwards 1s;
+    position: relative;
+    z-index: 1;
+  }
+  #socia-sig .sig-checker::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 200%;
+    background-image:
+      linear-gradient(45deg, rgba(168,255,0,0.28) 25%, transparent 25%),
+      linear-gradient(-45deg, rgba(168,255,0,0.28) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgba(168,255,0,0.28) 75%),
+      linear-gradient(-45deg, transparent 75%, rgba(168,255,0,0.28) 75%);
+    background-size: 5px 5px;
+    background-position: 0 0, 0 2.5px, 2.5px -2.5px, -2.5px 0px;
+    -webkit-animation: svChecker 6s linear infinite;
+    animation: svChecker 6s linear infinite;
+  }
+  @-webkit-keyframes svChecker { from { -webkit-transform: translateX(0); transform: translateX(0); } to { -webkit-transform: translateX(-50%); transform: translateX(-50%); } }
+  @keyframes svChecker          { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
   #socia-sig .sig-footer {
-    padding: 9px 20px 12px;
+    padding: 7px 18px 10px;
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -264,8 +291,8 @@
   }
 
   @media (max-width: 480px) {
-    #socia-sig .sig-body   { padding: 14px 14px 14px; }
-    #socia-sig .sig-footer { padding: 8px 14px 10px; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: flex-start; align-items: flex-start; gap: 8px; }
+    #socia-sig .sig-body   { padding: 10px 12px 10px; }
+    #socia-sig .sig-footer { padding: 6px 12px 9px; -webkit-flex-direction: column; flex-direction: column; -webkit-align-items: flex-start; align-items: flex-start; gap: 8px; }
     #socia-sig .sig-name   { font-size: 13px; }
     #socia-sig .sig-title  { font-size: 8px; }
     #socia-sig .contact-val { font-size: 9.5px; }
@@ -326,6 +353,8 @@
 
     </div>
   </div>
+
+  <div class="sig-checker"></div>
 
   <div class="sig-footer">
     <div class="sig-tagline">Sharp design. Clean code. Visuals that hit different.</div>
