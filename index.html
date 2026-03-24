@@ -15,9 +15,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       gap: 40px;
-      padding: 40px 20px;
+      padding: 48px 20px 60px;
       font-family: 'Chakra Petch', monospace, sans-serif;
     }
 
@@ -29,10 +28,34 @@
       text-transform: uppercase;
     }
 
-    /* ─── Signature Card ─── */
+    /* ─── Preview row: dark + light side-by-side ─── */
+    .preview-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      width: 100%;
+      max-width: 1160px;
+    }
+
+    .preview-col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mode-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 8px;
+      color: #2a2a2a;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    /* ─── Signature base ─── */
     .sig {
-      width: 580px;
-      max-width: 100%;
+      width: 100%;
       background: #0a0a0a;
       border: 1px solid #1a1a1a;
       position: relative;
@@ -72,7 +95,7 @@
     @keyframes cornersIn { to { opacity: 0.5; } }
 
     .sig-body {
-      padding: 24px 28px 0;
+      padding: 22px 24px 0;
       position: relative;
       z-index: 1;
     }
@@ -80,23 +103,15 @@
     .sig-row {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
     }
 
-    .logo-mark {
-      flex-shrink: 0;
-      width: 72px;
-      height: 72px;
-    }
-    .logo-mark img {
-      width: 72px;
-      height: 72px;
-      display: block;
-    }
+    .logo-mark { flex-shrink: 0; width: 96px; height: 96px; }
+    .logo-mark img { width: 96px; height: 96px; display: block; }
 
     .vdivider {
       width: 1px;
-      height: 76px;
+      height: 96px;
       background: linear-gradient(180deg, transparent, #A8FF00 40%, #D4FF00 60%, transparent);
       flex-shrink: 0;
       opacity: 0;
@@ -106,6 +121,7 @@
 
     .sig-info {
       flex: 1;
+      min-width: 0;
       opacity: 0;
       transform: translateX(6px);
       animation: slideIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
@@ -114,22 +130,23 @@
 
     .sig-name {
       font-family: 'Chakra Petch', monospace;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       color: #e8e8e8;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 4px;
+      white-space: nowrap;
     }
 
     .sig-title {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 9.5px;
+      font-size: 9px;
       color: #A8FF00;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       animation: titleFlicker 10s ease-in-out infinite 2s;
     }
     @keyframes titleFlicker {
@@ -138,31 +155,35 @@
     }
 
     .sig-contacts { display: flex; flex-direction: column; gap: 5px; }
-    .contact-row  { display: flex; align-items: center; gap: 10px; }
+    .contact-row  { display: flex; align-items: center; gap: 9px; }
 
     .contact-tag {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 8px;
-      color: #2a2a2a;
+      font-size: 7.5px;
+      color: #333;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      width: 26px;
+      width: 24px;
       flex-shrink: 0;
     }
 
     .contact-val {
       font-family: 'Chakra Petch', monospace;
-      font-size: 11px;
-      color: #999;
-      letter-spacing: 0.04em;
+      font-size: 10.5px;
+      color: #888;
+      letter-spacing: 0.03em;
       text-decoration: none;
       transition: color 0.25s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .contact-val:hover { color: #A8FF00; }
 
+    /* ── Services marquee ── */
     .sig-services {
-      margin-top: 20px;
-      padding: 10px 0;
+      margin-top: 18px;
+      padding: 9px 0;
       border-top: 1px solid #141414;
       border-bottom: 1px solid #141414;
       overflow: hidden;
@@ -178,41 +199,38 @@
     }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .svc-item { display: flex; align-items: center; gap: 10px; padding: 0 24px; white-space: nowrap; }
-    .svc-diamond { width: 5px; height: 5px; background: #A8FF00; clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); flex-shrink: 0; opacity: 0.6; }
-    .svc-label { font-family: 'Share Tech Mono', monospace; font-size: 8px; color: #2a2a2a; letter-spacing: 0.25em; text-transform: uppercase; }
+    .svc-item { display: flex; align-items: center; gap: 9px; padding: 0 22px; white-space: nowrap; }
+    .svc-diamond { width: 5px; height: 5px; background: #A8FF00; clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%); flex-shrink: 0; opacity: 0.6; }
+    .svc-label { font-family: 'Share Tech Mono', monospace; font-size: 7.5px; color: #555; letter-spacing: 0.25em; text-transform: uppercase; }
 
+    /* ── Footer ── */
     .sig-footer {
-      padding: 12px 28px 18px;
+      padding: 11px 24px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       position: relative;
       z-index: 1;
     }
 
     .sig-tagline {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 8px;
-      letter-spacing: 0.12em;
+      font-size: 7.5px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      background: linear-gradient(90deg, #1a1a1a 0%, #A8FF00 50%, #1a1a1a 100%);
+      background: linear-gradient(90deg, #1c1c1c 0%, #A8FF00 50%, #1c1c1c 100%);
       background-size: 300% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shimmer 5s linear infinite;
+      flex-shrink: 0;
     }
     @keyframes shimmer { 0% { background-position: 200% center; } 100% { background-position: -200% center; } }
 
-    .sig-socials { display: flex; align-items: center; gap: 14px; }
-    .soc-link {
-      display: inline-flex;
-      align-items: center;
-      color: #555;
-      text-decoration: none;
-      transition: color 0.25s ease;
-    }
+    .sig-socials { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+    .soc-link { display: inline-flex; align-items: center; color: #555; text-decoration: none; transition: color 0.25s ease; }
     .soc-link svg { width: 14px; height: 14px; display: block; }
     .soc-link:hover { color: #A8FF00; }
 
@@ -223,10 +241,47 @@
       animation: fadeIn 1.2s ease forwards 0.8s;
     }
 
+    /* ─── Light mode variant (class-based for side-by-side display) ─── */
+    .sig.light {
+      background: #f4f4f4;
+      border-color: #dedede;
+    }
+    .sig.light .sig-topbar {
+      background: linear-gradient(90deg, transparent 0%, #5a8c00 30%, #6aaa00 70%, transparent 100%);
+      opacity: 0.8;
+    }
+    .sig.light::before {
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.012) 3px, rgba(0,0,0,0.012) 4px);
+    }
+    .sig.light .corner { border-color: #b8b8b8; }
+    .sig.light .vdivider {
+      background: linear-gradient(180deg, transparent, #c0c0c0 40%, #d0d0d0 60%, transparent);
+    }
+    .sig.light .sig-name  { color: #111111; }
+    .sig.light .sig-title { color: #4d7a00; }
+    .sig.light .contact-tag { color: #aaaaaa; }
+    .sig.light .contact-val { color: #444444; }
+    .sig.light .contact-val:hover { color: #4d7a00; }
+    .sig.light .sig-services { border-color: #e4e4e4; }
+    .sig.light .svc-diamond  { background: #5a8c00; }
+    .sig.light .svc-label    { color: #999; }
+    .sig.light .sig-tagline  {
+      background: linear-gradient(90deg, #bbb 0%, #4d7a00 50%, #bbb 100%);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .sig.light .sig-bottombar {
+      background: linear-gradient(90deg, transparent 0%, #5a8c00 50%, transparent 100%);
+    }
+    .sig.light .soc-link       { color: #888; }
+    .sig.light .soc-link:hover { color: #4d7a00; }
+
     /* ─── Install panel ─── */
     .install {
-      width: 580px;
-      max-width: 100%;
+      width: 100%;
+      max-width: 1160px;
       background: #0a0a0a;
       border: 1px solid #1a1a1a;
       padding: 24px 28px;
@@ -312,7 +367,7 @@
     .asset-link {
       font-family: 'Share Tech Mono', monospace;
       font-size: 8px;
-      color: #2a2a2a;
+      color: #333;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
@@ -320,74 +375,161 @@
     }
     .asset-link:hover { color: #A8FF00; }
     .asset-sep { color: #1a1a1a; font-size: 8px; }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 720px) {
+      .preview-row   { flex-direction: column; }
+      .install-grid  { grid-template-columns: 1fr; }
+      .sig-footer    { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .logo-mark, .logo-mark img { width: 72px; height: 72px; }
+      .vdivider      { height: 76px; }
+      .sig-body      { padding: 18px 16px 0; }
+      .sig-footer    { padding: 10px 16px 14px; }
+      .sig-tagline   {
+        background: none;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        background-clip: unset;
+        color: #444;
+        animation: none;
+      }
+      .sig.light .sig-tagline { color: #666; -webkit-text-fill-color: #666; }
+    }
   </style>
 </head>
 <body>
 
   <div class="page-label">// Socia Visual — Animated Email Signature</div>
 
-  <!-- ═══ SIGNATURE PREVIEW ═══ -->
-  <div class="sig">
-    <div class="sig-topbar"></div>
-    <div class="corner corner-tl"></div>
-    <div class="corner corner-tr"></div>
-    <div class="corner corner-bl"></div>
-    <div class="corner corner-br"></div>
+  <!-- ═══ SIDE-BY-SIDE PREVIEW ═══ -->
+  <div class="preview-row">
 
-    <div class="sig-body">
-      <div class="sig-row">
+    <!-- Dark mode -->
+    <div class="preview-col">
+      <div class="mode-label">// Dark Mode</div>
+      <div class="sig dark">
+        <div class="sig-topbar"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
 
-        <div class="logo-mark">
-          <img src="./socia-logo-email.gif" alt="Socia Visual" width="72" height="72">
-        </div>
-
-        <div class="vdivider"></div>
-
-        <div class="sig-info">
-          <div class="sig-name">Scott Socia</div>
-          <div class="sig-title">// Founder &amp; Creative Director</div>
-          <div class="sig-contacts">
-            <div class="contact-row">
-              <span class="contact-tag">WEB</span>
-              <a href="https://sociavisual.com" class="contact-val">sociavisual.com</a>
+        <div class="sig-body">
+          <div class="sig-row">
+            <div class="logo-mark">
+              <img src="./socia-logo-email.gif" alt="Socia Visual" width="96" height="96">
             </div>
-            <div class="contact-row">
-              <span class="contact-tag">EML</span>
-              <a href="mailto:scott@sociavisual.com" class="contact-val">scott@sociavisual.com</a>
+            <div class="vdivider"></div>
+            <div class="sig-info">
+              <div class="sig-name">Scott Socia</div>
+              <div class="sig-title">// Founder &amp; Creative Director</div>
+              <div class="sig-contacts">
+                <div class="contact-row">
+                  <span class="contact-tag">WEB</span>
+                  <a href="https://sociavisual.com" class="contact-val">sociavisual.com</a>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-tag">EML</span>
+                  <a href="mailto:scott@sociavisual.com" class="contact-val">scott@sociavisual.com</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        <div class="sig-services">
+          <div class="services-track">
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+          </div>
+        </div>
+
+        <div class="sig-footer">
+          <div class="sig-tagline">Sharp design. Clean code. Visuals that hit different.</div>
+          <div class="sig-socials">
+            <a href="https://www.linkedin.com/company/sociavisual" class="soc-link" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.behance.net/scottsocia" class="soc-link" title="Behance"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.68.767-.635.165-1.3.254-1.99.254H0V4.51h6.938v-.007zm-.588 5.656c.648 0 1.17-.152 1.568-.447.397-.296.596-.756.596-1.377 0-.332-.06-.61-.173-.833-.12-.222-.283-.4-.49-.527-.207-.126-.44-.217-.712-.27-.27-.05-.558-.076-.856-.076H3.107v3.53h3.243zm.188 5.847c.33 0 .64-.03.93-.09s.54-.16.754-.3c.21-.14.38-.33.5-.57.12-.24.18-.54.18-.9 0-.72-.19-1.23-.58-1.54-.38-.3-.9-.45-1.54-.45H3.108v3.85h3.43zm11.555-5.74c.65 0 1.24.13 1.76.38.52.25.97.6 1.34 1.04.37.45.65.97.84 1.57.19.6.27 1.24.24 1.93H14.22c.04.78.28 1.39.73 1.82.45.43 1.04.64 1.79.64.53 0 .98-.14 1.36-.42.37-.28.6-.58.7-.9h2.91c-.46 1.42-1.17 2.44-2.13 3.06-.96.63-2.14.94-3.54.94-.96 0-1.82-.16-2.6-.47-.77-.31-1.43-.75-1.97-1.33-.54-.58-.96-1.27-1.25-2.09-.3-.82-.44-1.73-.44-2.73 0-.97.15-1.86.46-2.68.3-.82.74-1.53 1.29-2.12.55-.6 1.21-1.06 1.97-1.39.76-.33 1.6-.5 2.52-.5zm.06 2.3c-.66 0-1.2.18-1.64.54-.43.36-.7.9-.8 1.6h4.76c-.08-.72-.32-1.26-.72-1.63-.4-.37-.93-.51-1.6-.51zM14.8 4.5h5.57v1.58H14.8V4.5z"/></svg></a>
+            <a href="https://www.facebook.com/sociavis" class="soc-link" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="sig-bottombar"></div>
       </div>
     </div>
 
-    <div class="sig-services">
-      <div class="services-track">
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
-        <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+    <!-- Light mode -->
+    <div class="preview-col">
+      <div class="mode-label">// Light Mode</div>
+      <div class="sig light">
+        <div class="sig-topbar"></div>
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+
+        <div class="sig-body">
+          <div class="sig-row">
+            <div class="logo-mark">
+              <img src="./socia-logo-email.gif" alt="Socia Visual" width="96" height="96">
+            </div>
+            <div class="vdivider"></div>
+            <div class="sig-info">
+              <div class="sig-name">Scott Socia</div>
+              <div class="sig-title">// Founder &amp; Creative Director</div>
+              <div class="sig-contacts">
+                <div class="contact-row">
+                  <span class="contact-tag">WEB</span>
+                  <a href="https://sociavisual.com" class="contact-val">sociavisual.com</a>
+                </div>
+                <div class="contact-row">
+                  <span class="contact-tag">EML</span>
+                  <a href="mailto:scott@sociavisual.com" class="contact-val">scott@sociavisual.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sig-services">
+          <div class="services-track">
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+            <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+          </div>
+        </div>
+
+        <div class="sig-footer">
+          <div class="sig-tagline">Sharp design. Clean code. Visuals that hit different.</div>
+          <div class="sig-socials">
+            <a href="https://www.linkedin.com/company/sociavisual" class="soc-link" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.behance.net/scottsocia" class="soc-link" title="Behance"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.68.767-.635.165-1.3.254-1.99.254H0V4.51h6.938v-.007zm-.588 5.656c.648 0 1.17-.152 1.568-.447.397-.296.596-.756.596-1.377 0-.332-.06-.61-.173-.833-.12-.222-.283-.4-.49-.527-.207-.126-.44-.217-.712-.27-.27-.05-.558-.076-.856-.076H3.107v3.53h3.243zm.188 5.847c.33 0 .64-.03.93-.09s.54-.16.754-.3c.21-.14.38-.33.5-.57.12-.24.18-.54.18-.9 0-.72-.19-1.23-.58-1.54-.38-.3-.9-.45-1.54-.45H3.108v3.85h3.43zm11.555-5.74c.65 0 1.24.13 1.76.38.52.25.97.6 1.34 1.04.37.45.65.97.84 1.57.19.6.27 1.24.24 1.93H14.22c.04.78.28 1.39.73 1.82.45.43 1.04.64 1.79.64.53 0 .98-.14 1.36-.42.37-.28.6-.58.7-.9h2.91c-.46 1.42-1.17 2.44-2.13 3.06-.96.63-2.14.94-3.54.94-.96 0-1.82-.16-2.6-.47-.77-.31-1.43-.75-1.97-1.33-.54-.58-.96-1.27-1.25-2.09-.3-.82-.44-1.73-.44-2.73 0-.97.15-1.86.46-2.68.3-.82.74-1.53 1.29-2.12.55-.6 1.21-1.06 1.97-1.39.76-.33 1.6-.5 2.52-.5zm.06 2.3c-.66 0-1.2.18-1.64.54-.43.36-.7.9-.8 1.6h4.76c-.08-.72-.32-1.26-.72-1.63-.4-.37-.93-.51-1.6-.51zM14.8 4.5h5.57v1.58H14.8V4.5z"/></svg></a>
+            <a href="https://www.facebook.com/sociavis" class="soc-link" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="sig-bottombar"></div>
       </div>
     </div>
 
-    <div class="sig-footer">
-      <div class="sig-tagline">Sharp design. Clean code. Visuals that hit different.</div>
-      <div class="sig-socials">
-        <a href="https://www.linkedin.com/company/sociavisual" class="soc-link" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="https://www.behance.net/scottsocia" class="soc-link" title="Behance"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.938 4.503c.702 0 1.34.06 1.92.188.577.13 1.07.33 1.485.61.41.28.733.65.96 1.12.225.47.34 1.05.34 1.73 0 .74-.17 1.36-.507 1.86-.338.5-.837.9-1.502 1.22.906.26 1.576.72 2.022 1.37.448.66.665 1.45.665 2.36 0 .75-.13 1.39-.41 1.93-.28.55-.67 1-1.16 1.35-.48.348-1.05.6-1.68.767-.635.165-1.3.254-1.99.254H0V4.51h6.938v-.007zm-.588 5.656c.648 0 1.17-.152 1.568-.447.397-.296.596-.756.596-1.377 0-.332-.06-.61-.173-.833-.12-.222-.283-.4-.49-.527-.207-.126-.44-.217-.712-.27-.27-.05-.558-.076-.856-.076H3.107v3.53h3.243zm.188 5.847c.33 0 .64-.03.93-.09s.54-.16.754-.3c.21-.14.38-.33.5-.57.12-.24.18-.54.18-.9 0-.72-.19-1.23-.58-1.54-.38-.3-.9-.45-1.54-.45H3.108v3.85h3.43zm11.555-5.74c.65 0 1.24.13 1.76.38.52.25.97.6 1.34 1.04.37.45.65.97.84 1.57.19.6.27 1.24.24 1.93H14.22c.04.78.28 1.39.73 1.82.45.43 1.04.64 1.79.64.53 0 .98-.14 1.36-.42.37-.28.6-.58.7-.9h2.91c-.46 1.42-1.17 2.44-2.13 3.06-.96.63-2.14.94-3.54.94-.96 0-1.82-.16-2.6-.47-.77-.31-1.43-.75-1.97-1.33-.54-.58-.96-1.27-1.25-2.09-.3-.82-.44-1.73-.44-2.73 0-.97.15-1.86.46-2.68.3-.82.74-1.53 1.29-2.12.55-.6 1.21-1.06 1.97-1.39.76-.33 1.6-.5 2.52-.5zm.06 2.3c-.66 0-1.2.18-1.64.54-.43.36-.7.9-.8 1.6h4.76c-.08-.72-.32-1.26-.72-1.63-.4-.37-.93-.51-1.6-.51zM14.8 4.5h5.57v1.58H14.8V4.5z"/></svg></a>
-        <a href="https://www.facebook.com/sociavis" class="soc-link" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-      </div>
-    </div>
-
-    <div class="sig-bottombar"></div>
   </div>
 
   <!-- ═══ INSTALL PANEL ═══ -->
@@ -401,9 +543,9 @@
           <li>Open Mail → Settings → Signatures</li>
           <li>Click + to create a new signature</li>
           <li>Quit Mail completely (Cmd+Q)</li>
-          <li>Go to Finder → Go to Folder:<br><code style="color:#555">~/Library/Mail/V10/MailData/Signatures/</code></li>
+          <li>Go to Finder → Go to Folder: <code style="color:#555">~/Library/Mail/V10/MailData/Signatures/</code></li>
           <li>Open the newest .mailsig in TextEdit</li>
-          <li>Delete everything, paste contents of <code style="color:#555">apple-mail.html</code></li>
+          <li>Delete everything, paste contents of apple-mail.html</li>
           <li>Save and reopen Mail</li>
         </ol>
         <a href="./apple-mail.html" class="install-dl" download="socia-signature-apple-mail.html">↓ Download apple-mail.html</a>
@@ -412,11 +554,11 @@
       <div class="install-block">
         <h3>Gmail / Outlook</h3>
         <ol>
-          <li>Gmail: Settings → See all settings → Signature → Edit → switch to HTML mode</li>
-          <li>Paste the HTML source of apple-mail.html</li>
-          <li>Outlook: Insert → Signature → paste the HTML</li>
+          <li>Gmail: Settings → See all settings → Signature → switch to HTML mode</li>
+          <li>Paste the full HTML source of apple-mail.html</li>
+          <li>Outlook: Insert → Signature → paste HTML</li>
           <li>Animated GIF loads from Vercel CDN — no inline assets needed</li>
-          <li>Tip: disable "strip external images" in client settings</li>
+          <li>Tip: ensure "display external images" is enabled in client settings</li>
         </ol>
       </div>
 
