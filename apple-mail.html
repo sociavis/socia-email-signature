@@ -29,8 +29,10 @@
 
   #socia-sig .sig {
     width: 100%;
+    max-width: 100%;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
 
   #socia-sig .sig-topbar {
@@ -258,8 +260,10 @@
     background-clip: text;
     -webkit-animation: svShimmer 30s linear infinite;
     animation: svShimmer 30s linear infinite;
-    -webkit-flex-shrink: 0;
-    flex-shrink: 0;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   @-webkit-keyframes svShimmer {
     0%   { background-position: 200% center; }
@@ -278,6 +282,7 @@
     gap: 16px;
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
+    min-width: 0;
   }
 
   #socia-sig .soc-link {
@@ -350,8 +355,8 @@
 </head>
 <body>
 
-<div style="max-width:560px;width:100%;box-sizing:border-box;">
-<table id="socia-sig" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#0a0a0a" style="background:#0a0a0a;border:1px solid #1c1c1c;border-collapse:separate;box-sizing:border-box;width:100%;"><tr><td bgcolor="#0a0a0a" style="background:#0a0a0a;padding:0;">
+<div style="max-width:560px;width:100%;box-sizing:border-box;overflow:hidden;">
+<table id="socia-sig" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#0a0a0a" style="background:#0a0a0a;border:1px solid #1c1c1c;border-collapse:separate;box-sizing:border-box;width:100%;table-layout:fixed;"><tr><td bgcolor="#0a0a0a" style="background:#0a0a0a;padding:0;overflow:hidden;">
 <div class="sig">
   <div class="sig-topbar"></div>
   <div class="sig-scan"></div>
