@@ -126,14 +126,23 @@
     -webkit-flex: 1;
     flex: 1;
     min-width: 0;
-    opacity: 0;
-    -webkit-transform: translateX(5px);
-    transform: translateX(5px);
-    -webkit-animation: slideIn 0.6s ease forwards 0.3s;
-    animation: slideIn 0.6s ease forwards 0.3s;
   }
   @-webkit-keyframes slideIn { to { opacity: 1; -webkit-transform: none; transform: none; } }
   @keyframes slideIn          { to { opacity: 1; transform: none; } }
+
+  /* Per-line stagger */
+  .sig-name, .sig-title, .contact-row, .sig-services {
+    opacity: 0;
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px);
+    -webkit-animation: slideIn 0.6s ease forwards;
+    animation: slideIn 0.6s ease forwards;
+  }
+  .sig-name                              { -webkit-animation-delay: 0.3s;  animation-delay: 0.3s; }
+  .sig-title                             { -webkit-animation-delay: 0.55s; animation-delay: 0.55s; }
+  .contact-row:nth-child(1)              { -webkit-animation-delay: 0.75s; animation-delay: 0.75s; }
+  .contact-row:nth-child(2)              { -webkit-animation-delay: 0.95s; animation-delay: 0.95s; }
+  .sig-services                          { -webkit-animation-delay: 1.15s; animation-delay: 1.15s; }
 
   .sig-name {
     font-family: 'Chakra Petch', monospace, sans-serif;
@@ -210,8 +219,8 @@
     align-items: center;
     width: -webkit-max-content;
     width: max-content;
-    -webkit-animation: marquee 60s linear infinite;
-    animation: marquee 60s linear infinite;
+    -webkit-animation: marquee 150s linear infinite;
+    animation: marquee 150s linear infinite;
   }
   @-webkit-keyframes marquee {
     from { -webkit-transform: translateX(0); transform: translateX(0); }
