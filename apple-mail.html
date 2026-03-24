@@ -174,8 +174,34 @@
   }
   #socia-sig .contact-val:hover { color: #A8FF00; }
 
+  /* ── Services marquee ── */
+  #socia-sig .sig-services {
+    margin-top: 18px;
+    padding: 9px 0;
+    border-top: 1px solid #141414;
+    border-bottom: 1px solid #141414;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  #socia-sig .services-track {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    width: -webkit-max-content;
+    width: max-content;
+    -webkit-animation: svMarquee 22s linear infinite;
+    animation: svMarquee 22s linear infinite;
+  }
+  @-webkit-keyframes svMarquee { from { -webkit-transform: translateX(0); transform: translateX(0); } to { -webkit-transform: translateX(-50%); transform: translateX(-50%); } }
+  @keyframes svMarquee          { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  #socia-sig .svc-item    { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 9px; padding: 0 22px; white-space: nowrap; }
+  #socia-sig .svc-diamond { width: 5px; height: 5px; background: #A8FF00; -webkit-clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%); clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%); -webkit-flex-shrink: 0; flex-shrink: 0; opacity: 0.6; }
+  #socia-sig .svc-label   { font-family: 'Share Tech Mono', monospace; font-size: 7.5px; color: #888; letter-spacing: 0.25em; text-transform: uppercase; }
+
   #socia-sig .sig-footer {
-    padding: 2px 18px 22px;
+    padding: 11px 18px 16px;
     display: -webkit-flex;
     display: flex;
     -webkit-align-items: center;
@@ -324,6 +350,23 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <div class="sig-services">
+    <div class="services-track">
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Design</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Web Development</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Brand Identity</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Graphic Design</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Motion Graphics</span></div>
+      <div class="svc-item"><span class="svc-diamond"></span><span class="svc-label">Visual Identity</span></div>
     </div>
   </div>
 
