@@ -40,8 +40,7 @@
   .sig {
     width: 100%;
     max-width: 560px;
-    background: #0a0a0a;
-    border: 1px solid #1c1c1c;
+    background: transparent;
     position: relative;
     overflow: hidden;
   }
@@ -55,20 +54,8 @@
   @-webkit-keyframes barPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
   @keyframes barPulse          { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
 
-  /* Scan-line texture */
-  .sig-scan {
-    position: absolute;
-    inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      rgba(168, 255, 0, 0.013) 3px,
-      rgba(168, 255, 0, 0.013) 4px
-    );
-    pointer-events: none;
-    z-index: 10;
-  }
+  /* Scan-line texture — hidden on transparent bg */
+  .sig-scan { display: none; }
 
   /* HUD corner brackets */
   .corner {
@@ -86,8 +73,8 @@
   .c-tr { top: 5px;    right: 5px;  border-width: 1px 1px 0 0; -webkit-animation-delay:.2s; animation-delay:.2s; }
   .c-bl { bottom: 5px; left: 5px;   border-width: 0 0 1px 1px; -webkit-animation-delay:.3s; animation-delay:.3s; }
   .c-br { bottom: 5px; right: 5px;  border-width: 0 1px 1px 0; -webkit-animation-delay:.4s; animation-delay:.4s; }
-  @-webkit-keyframes cornersIn { to { opacity: 0.5; } }
-  @keyframes cornersIn          { to { opacity: 0.5; } }
+  @-webkit-keyframes cornersIn { to { opacity: 0.4; } }
+  @keyframes cornersIn          { to { opacity: 0.4; } }
 
   /* ── Main row ── */
   .sig-body {
@@ -205,8 +192,8 @@
   .sig-services {
     margin-top: 18px;
     padding: 9px 0;
-    border-top: 1px solid #141414;
-    border-bottom: 1px solid #141414;
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -322,13 +309,7 @@
   .soc-link svg { width: 14px; height: 14px; display: block; }
   .soc-link:hover { color: #A8FF00; }
 
-  .sig-bottombar {
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #A8FF00 50%, transparent 100%);
-    opacity: 0;
-    -webkit-animation: fadeIn 1.2s ease forwards 0.8s;
-    animation: fadeIn 1.2s ease forwards 0.8s;
-  }
+  .sig-bottombar { display: none; }
 
   /* ════════════════════════════════════════
      LIGHT MODE OVERRIDES
@@ -339,53 +320,52 @@
   ════════════════════════════════════════ */
   @media (prefers-color-scheme: light) {
 
-    .sig {
-      background: #f7f7f7;
-      border-color: #e0e0e0;
+    /* Top accent bar: olive instead of neon */
+    .sig-topbar {
+      background: linear-gradient(90deg, transparent 0%, #5a8800 35%, #7ab000 65%, transparent 100%);
     }
 
-    /* Lighter scan lines */
-    .sig-scan {
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 3px,
-        rgba(0, 0, 0, 0.015) 3px,
-        rgba(0, 0, 0, 0.015) 4px
-      );
-    }
+    /* Corner brackets: dark olive */
+    .corner { border-color: #5a8800; }
+    @-webkit-keyframes cornersIn { to { opacity: 0.55; } }
+    @keyframes cornersIn          { to { opacity: 0.55; } }
 
-    /* Corner brackets: swap to mid-gray */
-    .corner { border-color: #c0c0c0; }
-    @-webkit-keyframes cornersIn { to { opacity: 0.6; } }
-    @keyframes cornersIn          { to { opacity: 0.6; } }
-
-    /* Logo GIF transparent bg — neon green shows on any background */
-    /* No override needed; GIF works on light backgrounds too */
-
-    /* Vertical divider: light gray */
+    /* Vertical divider */
     .vdivider {
-      background: linear-gradient(180deg, transparent, #c8c8c8 40%, #d8d8d8 60%, transparent);
+      background: linear-gradient(180deg, transparent, #999 40%, #bbb 60%, transparent);
     }
 
-    /* Text */
-    .sig-name  { color: #111111; }
-    .sig-title { color: #4d7a00; } /* dark olive: readable on white */
+    /* Name: near-black, bold */
+    .sig-name { color: #0f0f0f; }
+
+    /* Title: dark olive, still punchy */
+    .sig-title {
+      color: #3d6200;
+      -webkit-animation: slideIn 0.6s ease forwards 0.55s, flicker 10s ease-in-out infinite 3s;
+      animation: slideIn 0.6s ease forwards 0.55s, flicker 10s ease-in-out infinite 3s;
+    }
+    @-webkit-keyframes flicker {
+      0%, 94%, 96%, 98%, 100% { opacity: 1; }
+      95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
+    }
+    @keyframes flicker {
+      0%, 94%, 96%, 98%, 100% { opacity: 1; }
+      95% { opacity: 0.4; } 97% { opacity: 0.8; } 99% { opacity: 0.5; }
+    }
 
     /* Contacts */
-    .contact-tag { color: #aaaaaa; }
-    .contact-val { color: #444444; }
-    .contact-val:hover { color: #4d7a00; }
+    .contact-tag { color: #888; }
+    .contact-val { color: #222; }
+    .contact-val:hover { color: #3d6200; }
 
     /* Services strip */
-    .sig-services { border-color: #e8e8e8; }
-    .svc-diamond  { background: #5a8c00; } /* darker green, visible on light */
-    .svc-label    { color: #aaaaaa; }
+    .sig-services { border-color: #ccc; }
+    .svc-diamond  { background: #4d7a00; opacity: 0.8; }
+    .svc-label    { color: #555; }
 
-    /* Tagline shimmer: swap gradient colors (background-position
-       animation stays the same — only the gradient itself changes) */
+    /* Tagline shimmer */
     .sig-tagline {
-      background: linear-gradient(90deg, #c0c0c0 0%, #4d7a00 50%, #c0c0c0 100%);
+      background: linear-gradient(90deg, #888 0%, #3d6200 50%, #888 100%);
       background-size: 300% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -393,8 +373,8 @@
     }
 
     /* Socials */
-    .soc-link { color: #888; }
-    .soc-link:hover { color: #4d7a00; }
+    .soc-link { color: #666; }
+    .soc-link:hover { color: #3d6200; }
   }
 
   /* ════════════════════════════════════════
